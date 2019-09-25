@@ -7,5 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "William Lovo",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "ember-cli-showdown": "^4.4.4",
+    "moment": "^2.24.0"
+  }
 }
