@@ -12,7 +12,7 @@ class MainContent extends Component {
           <h1>Comments</h1>
         </Route>
         <Route exact path="/posts">
-          <h1>Blob</h1>
+          <h1>Posts</h1>
           <ul>
             <SinglePost />
           </ul>

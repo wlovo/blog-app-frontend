@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Media from 'react-bootstrap/Media';
+import get from 'lodash/get';
 import userPhoto from '../images/user.svg'
 
 class SinglePost extends Component {
   constructor(props) {
     super(props);
-    this.state = { post: {} };
+    const post = get(props, 'post', { title: 'Title', body: 'Words'});
+    this.state = { post };
   }
 
   render() {
@@ -20,12 +22,9 @@ class SinglePost extends Component {
             alt="Generic placeholder"
           />
           <Media.Body>
-            <h5>List-based media object</h5>
+            <h5>{this.state.post.title}</h5>
             <p>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-              sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra
-              turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
-              in faucibus.
+              {this.state.post.body}
             </p>
           </Media.Body>
         </Media>
