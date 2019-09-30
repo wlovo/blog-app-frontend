@@ -1,4 +1,5 @@
 import React, { Suspense, Component } from 'react';
+import Switch from 'react-router-dom/Switch';
 import Container from 'react-bootstrap/Container';
 import Header from './Header';
 // import MainContent from './MainContent'
@@ -11,7 +12,9 @@ class AppWrapper extends Component {
       <Container>
         <Header />
         <Suspense fallback={<div>Loading...</div>}>
-          <MainContent />
+          <Switch>
+            <MainContent />
+          </Switch>
         </Suspense>
         <Footer />
       </Container>

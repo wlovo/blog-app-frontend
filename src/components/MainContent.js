@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
+import Route from 'react-router-dom/Route';
+import HomePage from './HomePage';
+import SinglePost from './SinglePost';
 
 class MainContent extends Component {
   render() {
     return (
       <Container>
-        <h1>Will's Blog Log</h1>
-        <h3>Welcome to the Blog</h3>
-        <p>Hello</p>
+        <Route exact path="/comments">
+          <h1>Comments</h1>
+        </Route>
+        <Route exact path="/posts">
+          <h1>Blob</h1>
+          <ul>
+            <SinglePost />
+          </ul>
+        </Route>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
       </Container>
     );
   }
