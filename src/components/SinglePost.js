@@ -19,7 +19,7 @@ class SinglePost extends Component {
             height={64}
             className="mr-3"
             src={userPhoto}
-            alt="Generic placeholder"
+            alt="User pic"
           />
           <Media.Body>
             <h5>{this.state.post.title}</h5>
