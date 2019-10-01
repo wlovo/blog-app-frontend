@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavLink from 'react-router-dom/NavLink';
+import { Button, Form, Nav, Navbar } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
   render() {
@@ -14,18 +11,24 @@ class Header extends Component {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav onClick={this.handleSelect} className="mr-auto">
             <Nav.Item>
-              <Nav.Link href="/" eventKey="/">
-                <NavLink activeClassName="active" to="/">Home</NavLink>
+              <Nav.Link as="div" href="/" eventKey="/">
+                <NavLink activeClassName="active" to="/">
+                  Home
+                </NavLink>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/posts" eventKey="/posts">
-                <NavLink activeClassName="active" to="/posts">All Posts</NavLink>
+              <Nav.Link as="div" href="/posts" eventKey="/posts">
+                <NavLink activeClassName="active" to="/posts">
+                  All Posts
+                </NavLink>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/comments" eventKey="/comments">
-              <NavLink activeClassName="active" to="/comments">All Comments</NavLink>
+              <Nav.Link as="div" href="/comments" eventKey="/comments">
+                <NavLink activeClassName="active" to="/comments">
+                  All Comments
+                </NavLink>
               </Nav.Link>
             </Nav.Item>
           </Nav>

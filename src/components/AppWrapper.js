@@ -1,5 +1,5 @@
 import React, { Suspense, Component } from 'react';
-import Switch from 'react-router-dom/Switch';
+import { Switch } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Header from './Header';
 // import MainContent from './MainContent'
