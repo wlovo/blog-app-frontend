@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
-import Route from 'react-router-dom/Route';
+import { Route } from 'react-router-dom';
 import PageHome from './Page.Home';
-import SinglePost from './Part.SinglePost';
+import PagePost from '../containers/Page.Post';
 
 class MainContent extends Component {
   render() {
@@ -13,9 +13,7 @@ class MainContent extends Component {
         </Route>
         <Route exact path="/posts">
           <h1>Posts</h1>
-          <ul>
-            <SinglePost />
-          </ul>
+          <PagePost />
         </Route>
         <Route exact path="/">
           <PageHome />
