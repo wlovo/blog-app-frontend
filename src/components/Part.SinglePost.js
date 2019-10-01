@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Media from 'react-bootstrap/Media';
 import get from 'lodash/get';
+import formatDate from '../utils/format-date';
 import userPhoto from '../images/user.svg'
 
 class SinglePost extends Component {
@@ -23,6 +24,7 @@ class SinglePost extends Component {
           />
           <Media.Body>
             <h5>{this.state.post.title}</h5>
+            <h6><em>Written by author on {formatDate(this.state.post.updatedAt)}</em></h6>
             <p>
               {this.state.post.body}
             </p>
