@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import { Route } from 'react-router-dom';
 import PageHome from './Page.Home';
 import PagePost from '../containers/Page.Post';
-import PageComments from './Page.Comments';
+import PageComments from '../containers/Page.Comment';
 
 const MainContent = () => (
   <Container>
