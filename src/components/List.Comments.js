@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import get from 'lodash/get';
 import PartSingleComment from './Part.SingleComment';
 
@@ -7,8 +7,14 @@ const ListComments = (props) => {
     comments: [],
   };
 
-  const [comments] = useState(get(props, 'comments', stateDefaults.comments));
-  const commentArray = comments.map((comment) => (
+  const [currComments, setCurrComments] = useState([]);
+  const comments = get(props, 'comments', stateDefaults.comments);
+
+  useEffect(() => {
+    setCurrComments(comments);
+  }, [comments]);
+
+  const commentArray = currComments.map((comment) => (
     <PartSingleComment key={comment.id} comment={comment} />
   ));
 
