@@ -1,11 +1,11 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 
-const PageHome = () => (
+const PageComments = () => (
   <Container fluid className="p-0">
-    <h1>The Blog Spot</h1>
-    <p>Future space for the most recent 5 posts.</p>
+    <h1>Comments</h1>
+    <p>Future space for all available comments.</p>
   </Container>
 );
 
-export default PageHome;
+export default PageComments;
