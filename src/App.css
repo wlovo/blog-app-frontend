@@ -12,9 +12,17 @@
   font-size: calc(10px + 1vmin);
 }
 
+.App-header * a {
+  color: inherit !important;
+}
+
 .App-footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 1vmin);
+  font-size: calc(9px + 1vmin);
+}
+
+.Card-header-toggle {
+  cursor: pointer;
 }
