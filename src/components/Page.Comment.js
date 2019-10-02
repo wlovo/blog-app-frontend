@@ -8,9 +8,9 @@ const PageComments = (props) => {
   return (
     <Container fluid className="p-0">
       <h1>Comments</h1>
-      <ListComments comments={comments} />
+      <ListComments comments={comments} cardItem />
     </Container>
   );
-}
+};
 
 export default PageComments;
