@@ -1,23 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import PartSinglePost from './Part.SinglePost';
+import get from 'lodash/get';
+import ListPosts from './List.Posts';
 
-const PagePost = ({ posts }) => (
-  <div>
-    <ul>
-      {posts.map(post => (
-        <PartSinglePost key={post.id} post={post} />
-      ))}
-    </ul>
-  </div>
-);
-
-PagePost.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.object),
-};
-
-PagePost.defaultProps = {
-  posts: [],
+const PagePost = (props) => {
+  const posts = get(props, 'posts', []);
+  return (
+    <div>
+      <ListPosts posts={posts} />
+    </div>
+  );
 };
 
 export default PagePost;
