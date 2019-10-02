@@ -1,10 +1,17 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const PageHome = () => (
   <Container fluid className="p-0">
     <h1>The Blog Spot</h1>
-    <p>Future space for the most recent 5 posts.</p>
+    <Row>
+      <Col xs={12}>
+        <h3>Most Recent Posts</h3>
+      </Col>
+      <Col xs={12}>
+        <h3>Most Commented Posts</h3>
+      </Col>
+    </Row>
   </Container>
 );
 
