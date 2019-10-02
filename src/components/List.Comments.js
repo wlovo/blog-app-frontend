@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import get from 'lodash/get';
 import PartSingleComment from './Part.SingleComment';
 
-const PartCommentList = (props) => {
+const ListComments = (props) => {
   const stateDefaults = {
     comments: [],
   };
@@ -19,4 +19,4 @@ const PartCommentList = (props) => {
   );
 };
 
-export default PartCommentList;
+export default ListComments;
