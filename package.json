@@ -1,7 +1,7 @@
 {
   "name": "blog-app-frontend",
   "version": "1.0.0",
-  "description": "Blog app for PerfectSense interview",
+  "description": "Frontend for a simple Blog app.",
   "main": "index.js",
   "author": "William Lovo",
   "license": "ISC",
@@ -17,6 +17,9 @@
     "react-router-dom": "^5.1.1",
     "react-scripts": "3.1.2",
     "redux-starter-kit": "^0.7.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^18.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,8 +41,5 @@
       "last 2 firefox version",
       "last 2 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint-config-airbnb": "^18.0.1"
   }
 }
