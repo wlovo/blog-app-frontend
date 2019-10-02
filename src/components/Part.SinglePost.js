@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import Media from 'react-bootstrap/Media';
 import get from 'lodash/get';
+import Accordion from 'react-bootstrap/Accordion';
+import Badge from 'react-bootstrap/Badge';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Media from 'react-bootstrap/Media';
 import formatDate from '../utils/format-date';
 import userPhoto from '../images/user.svg';
 import PartCommentList from './Part.CommentList';
@@ -14,6 +18,7 @@ const SinglePost = (props) => {
   const [post] = useState(get(props, 'post', stateDefaults.post));
 
   const {
+    id,
     body,
     title,
     updatedAt,
@@ -25,17 +30,36 @@ const SinglePost = (props) => {
 
   return (
     <>
-      <Media as="li">
-        <img width={64} height={64} className="mr-3" src={userPhoto} alt="User pic" />
-        <Media.Body>
-          <h5>{title}</h5>
-          <h6>
-            <em>{`Written by ${author} on ${dateLastUpdated}`}</em>
-          </h6>
-          <p>{body}</p>
-          <PartCommentList comments={comments} />
-        </Media.Body>
-      </Media>
+      <Card bg="dark" border="secondary" as="li">
+        <Card.Body>
+          <Media>
+            <img width={64} height={64} className="mr-3" src={userPhoto} alt="User pic" />
+            <Media.Body>
+              <h5>{title}</h5>
+              <h6>
+                <em>{`Written by ${author} on ${dateLastUpdated}`}</em>
+              </h6>
+              <p>{body}</p>
+              <Accordion>
+                <Card bg="dark">
+                  <Card.Header>
+                    <Accordion.Toggle as={Button} variant="dark" eventKey={id}>
+                      {'Comments'}
+                      <Badge variant="secondary" className="ml-1">{get(comments, 'length', '')}</Badge>
+                    </Accordion.Toggle>
+                  </Card.Header>
+                  <Accordion.Collapse eventKey={id}>
+                    <Card.Body>
+                      <PartCommentList comments={comments} />
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+
+              </Accordion>
+            </Media.Body>
+          </Media>
+        </Card.Body>
+      </Card>
     </>
   );
 };
