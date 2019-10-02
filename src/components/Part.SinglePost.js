@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import get from 'lodash/get';
 import Accordion from 'react-bootstrap/Accordion';
 import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Media from 'react-bootstrap/Media';
 import formatDate from '../utils/format-date';
 import userPhoto from '../images/user.svg';
-import PartCommentList from './Part.CommentList';
+import ListComments from './List.Comments';
 
 const SinglePost = (props) => {
   const stateDefaults = {
@@ -27,6 +26,7 @@ const SinglePost = (props) => {
   } = post;
 
   const dateLastUpdated = formatDate(updatedAt);
+  const numComments = get(comments, 'length', '');
 
   return (
     <>
@@ -40,24 +40,24 @@ const SinglePost = (props) => {
                 <em>{`Written by ${author} on ${dateLastUpdated}`}</em>
               </h6>
               <p>{body}</p>
-              <Accordion>
-                <Card bg="dark">
-                  <Card.Header>
-                    <Accordion.Toggle as={Button} variant="dark" eventKey={id}>
-                      {'Comments'}
-                      <Badge variant="secondary" className="ml-1">{get(comments, 'length', '')}</Badge>
-                    </Accordion.Toggle>
-                  </Card.Header>
-                  <Accordion.Collapse eventKey={id}>
-                    <Card.Body>
-                      <PartCommentList comments={comments} />
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
 
-              </Accordion>
             </Media.Body>
           </Media>
+          <Accordion>
+            <Card bg="dark">
+              <Accordion.Toggle as={Card.Header} eventKey={id} className="Card-header-toggle">
+                {'Comments'}
+                <Badge variant="secondary" className="ml-1">{numComments}</Badge>
+              </Accordion.Toggle>
+              {!!numComments && (
+              <Accordion.Collapse eventKey={id}>
+                <Card.Body>
+                  <ListComments comments={comments} />
+                </Card.Body>
+              </Accordion.Collapse>
+              )}
+            </Card>
+          </Accordion>
         </Card.Body>
       </Card>
     </>

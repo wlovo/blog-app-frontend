@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import get from 'lodash/get';
-import Container from 'react-bootstrap/Container';
 import PartSingleComment from './Part.SingleComment';
 
 const PartCommentList = (props) => {
@@ -14,11 +13,9 @@ const PartCommentList = (props) => {
   ));
 
   return (
-    <Container>
-      <ul>
-        {commentArray}
-      </ul>
-    </Container>
+    <ul>
+      {commentArray}
+    </ul>
   );
 };
 
