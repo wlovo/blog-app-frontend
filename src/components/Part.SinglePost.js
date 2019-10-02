@@ -1,38 +1,43 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Media from 'react-bootstrap/Media';
 import get from 'lodash/get';
 import formatDate from '../utils/format-date';
-import userPhoto from '../images/user.svg'
+import userPhoto from '../images/user.svg';
+import PartCommentList from './Part.CommentList';
 
-class SinglePost extends Component {
-  constructor(props) {
-    super(props);
-    const post = get(props, 'post', { title: 'Title', body: 'Words'});
-    this.state = { post };
-  }
+const SinglePost = (props) => {
+  const stateDefaults = {
+    currentUser: {},
+    post: { title: 'Title', body: 'Words', comments: [] },
+  };
 
-  render() {
-    return (
-      <>
-        <Media as="li">
-          <img
-            width={64}
-            height={64}
-            className="mr-3"
-            src={userPhoto}
-            alt="User pic"
-          />
-          <Media.Body>
-            <h5>{this.state.post.title}</h5>
-            <h6><em>Written by author on {formatDate(this.state.post.updatedAt)}</em></h6>
-            <p>
-              {this.state.post.body}
-            </p>
-          </Media.Body>
-        </Media>
-      </>
-    );
-  }
-}
+  const [post] = useState(get(props, 'post', stateDefaults.post));
+
+  const {
+    body,
+    title,
+    updatedAt,
+    comments,
+    author = 'Anonymous',
+  } = post;
+
+  const dateLastUpdated = formatDate(updatedAt);
+
+  return (
+    <>
+      <Media as="li">
+        <img width={64} height={64} className="mr-3" src={userPhoto} alt="User pic" />
+        <Media.Body>
+          <h5>{title}</h5>
+          <h6>
+            <em>{`Written by ${author} on ${dateLastUpdated}`}</em>
+          </h6>
+          <p>{body}</p>
+          <PartCommentList comments={comments} />
+        </Media.Body>
+      </Media>
+    </>
+  );
+};
 
 export default SinglePost;
