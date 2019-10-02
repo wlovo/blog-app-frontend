@@ -1,15 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class PageHome extends Component {
-  render() {
-    return (
-      <>
-        <h1>Will's Blog Log</h1>
-        <h3>Welcome to the Blog</h3>
-        <p>Hello</p>
-      </>
-    );
-  }
-}
+const PageHome = () => (
+  <>
+    <h1>The Blog Spot</h1>
+    <p>Future space for the most recent 5 posts.</p>
+  </>
+);
 
 export default PageHome;
