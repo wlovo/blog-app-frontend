@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import get from 'lodash/get';
-import Accordion from 'react-bootstrap/Accordion';
-import Badge from 'react-bootstrap/Badge';
-import Card from 'react-bootstrap/Card';
-import Media from 'react-bootstrap/Media';
+import {
+  Accordion, Badge, Card, Media,
+} from 'react-bootstrap';
 import formatDate from '../utils/format-date';
 import userPhoto from '../images/user.svg';
 import ListComments from './List.Comments';
