@@ -9,13 +9,14 @@ const PartCommentList = (props) => {
   };
 
   const [comments] = useState(get(props, 'comments', stateDefaults.comments));
+  const commentArray = comments.map((comment) => (
+    <PartSingleComment key={comment.id} comment={comment} />
+  ));
 
   return (
     <Container>
       <ul>
-        {comments.map((comment) => (
-          <PartSingleComment key={comment.id} comment={comment} />
-        ))}
+        {commentArray}
       </ul>
     </Container>
   );
