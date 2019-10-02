@@ -1,16 +1,9 @@
-import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
+import React from 'react';
 
-class Footer extends Component {
-  render() {
-    return (
-      <>
-        <Container className="App-footer">
-          Thank you. -Will
-        </Container>
-      </>
-    );
-  }
-}
+const Footer = () => (
+  <footer className="App-footer footer">
+    Thank you. -Will
+  </footer>
+);
 
 export default Footer;
