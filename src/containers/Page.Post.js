@@ -1,29 +1,23 @@
 import React, { Component, Suspense } from 'react';
+import get from 'lodash/get';
 import axios from '../utils/axios-default';
 import PagePost from '../components/Page.Post';
 
 class PagePostContainer extends Component {
-  getPosts = async () => {
-    const {data} = await axios.get('/posts')
-    this.setState({ posts: data })
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: [],
-    };
-  }
-
   async componentDidMount() {
     await this.getPosts();
   }
+
+  getPosts = async () => {
+    const { data } = await axios.get('/posts');
+    this.setState({ posts: data });
+  };
 
   render() {
     return (
       <>
         <Suspense fallback={<div>Loading...</div>}>
-          <PagePost posts={this.state.posts} />
+          <PagePost posts={get(this.state, 'posts')} />
         </Suspense>
       </>
     );
