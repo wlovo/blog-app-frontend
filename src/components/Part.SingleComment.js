@@ -10,6 +10,7 @@ const SingleComment = (props) => {
     comment: { body: 'Words' },
   };
 
+  const as = get(props, 'as', 'li');
   const [comment] = useState(get(props, 'comment', stateDefaults.comment));
 
   const {
@@ -22,7 +23,7 @@ const SingleComment = (props) => {
 
   return (
     <>
-      <Media as="li">
+      <Media as={as}>
         <img
           width={48}
           height={48}
