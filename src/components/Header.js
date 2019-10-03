@@ -28,8 +28,12 @@ const Header = () => (
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <Form inline className="mt-3 mt-md-auto d-flex justify-content-center">
-        <Button variant="outline-info">Login</Button>
+      <Form inline className="mt-3 my-md-auto d-flex justify-content-center">
+        <Button variant="outline-info" className="mx-auto">
+          <NavLink activeClassName="active" exact to="/new-post">
+          New Post
+          </NavLink>
+        </Button>
       </Form>
     </Navbar.Collapse>
   </Navbar>
