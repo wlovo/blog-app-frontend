@@ -24,7 +24,6 @@ const setInitialFormValues = (props) => {
 };
 
 const useOnSubmit = (values, formikBag) => {
-  console.log(values);
   formikBag.setSubmitting(false);
   formikBag.props.onSubmit(values);
 };

@@ -3,7 +3,7 @@ import get from 'lodash/get';
 import axios from '../utils/axios-default';
 import PageComment from '../components/Page.Comment';
 
-class PagePostContainer extends Component {
+class PageCommentContainer extends Component {
   async componentDidMount() {
     await this.getComments();
   }
@@ -24,4 +24,4 @@ class PagePostContainer extends Component {
   }
 }
 
-export default PagePostContainer;
+export default PageCommentContainer;
