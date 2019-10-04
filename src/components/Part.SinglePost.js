@@ -22,10 +22,38 @@ const SinglePost = (props) => {
     updatedAt,
     comments,
     author = 'Anonymous',
+    cardItem = false,
   } = post;
 
   const dateLastUpdated = formatDate(updatedAt);
   const numComments = get(comments, 'length', '');
+  const commentCardBody = (<Card.Body><ListComments comments={comments} /></Card.Body>);
+  const commentSection = cardItem === true
+    ? (
+      <Card bg="dark">
+        <Card.Header>
+          {'Comments'}
+          <Card.Link href="#">Add a comment</Card.Link>
+        </Card.Header>
+        {numComments
+          ? commentCardBody
+          : 'No comments'}
+      </Card>
+    ) : (
+      <Accordion>
+        <Card bg="dark">
+          <Accordion.Toggle as={Card.Header} eventKey={id} className="Card-header-toggle">
+            {'Comments'}
+            <Badge variant="secondary" className="ml-1">{numComments}</Badge>
+          </Accordion.Toggle>
+          {!!numComments && (
+          <Accordion.Collapse eventKey={id}>
+            {commentCardBody}
+          </Accordion.Collapse>
+          )}
+        </Card>
+      </Accordion>
+    );
 
   return (
     <>
@@ -39,24 +67,9 @@ const SinglePost = (props) => {
                 <em>{`Written by ${author} on ${dateLastUpdated}`}</em>
               </h6>
               <p>{body}</p>
-
             </Media.Body>
           </Media>
-          <Accordion>
-            <Card bg="dark">
-              <Accordion.Toggle as={Card.Header} eventKey={id} className="Card-header-toggle">
-                {'Comments'}
-                <Badge variant="secondary" className="ml-1">{numComments}</Badge>
-              </Accordion.Toggle>
-              {!!numComments && (
-              <Accordion.Collapse eventKey={id}>
-                <Card.Body>
-                  <ListComments comments={comments} />
-                </Card.Body>
-              </Accordion.Collapse>
-              )}
-            </Card>
-          </Accordion>
+          {commentSection}
         </Card.Body>
       </Card>
     </>
