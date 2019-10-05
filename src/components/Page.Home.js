@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import RecentPosts from '../containers/Part.RecentPosts';
 
 const PageHome = () => (
   <Container fluid className="p-0">
@@ -7,9 +8,7 @@ const PageHome = () => (
     <Row>
       <Col xs={12}>
         <h3>Most Recent Posts</h3>
-      </Col>
-      <Col xs={12}>
-        <h3>Most Commented Posts</h3>
+        <RecentPosts />
       </Col>
     </Row>
   </Container>
