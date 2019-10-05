@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import formatDate from '../utils/format-date';
 import userPhoto from '../images/user.svg';
 import ListComments from './List.Comments';
+import AddComment from '../containers/Part.AddComment';
 
 const SinglePost = (props) => {
   const stateDefaults = {
@@ -35,9 +36,9 @@ const SinglePost = (props) => {
       <Card bg="dark">
         <Card.Header>
           {'Comments'}
-          <Card.Link href="#" className="ml-2">Add a comment</Card.Link>
         </Card.Header>
         <Card.Body>
+          <AddComment postId={id} />
           {numComments
             ? commentCardBody
             : 'No comments'}
