@@ -8,7 +8,7 @@ const PageViewPost = (props) => {
   return (
     <Container fluid className="p-0">
       <h1>View Post</h1>
-      <SinglePost key={post.id} post={post} />
+      <SinglePost key={post.id} post={post} cardItem />
     </Container>
   );
 };

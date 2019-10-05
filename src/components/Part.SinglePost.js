@@ -3,6 +3,7 @@ import get from 'lodash/get';
 import {
   Accordion, Badge, Card, Media,
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import formatDate from '../utils/format-date';
 import userPhoto from '../images/user.svg';
 import ListComments from './List.Comments';
@@ -22,22 +23,25 @@ const SinglePost = (props) => {
     updatedAt,
     comments,
     author = 'Anonymous',
-    cardItem = false,
   } = post;
+
+  const cardItem = get(props, 'cardItem', false);
 
   const dateLastUpdated = formatDate(updatedAt);
   const numComments = get(comments, 'length', '');
-  const commentCardBody = (<Card.Body><ListComments comments={comments} /></Card.Body>);
-  const commentSection = cardItem === true
+  const commentCardBody = <ListComments comments={comments} />;
+  const commentSection = cardItem
     ? (
       <Card bg="dark">
         <Card.Header>
           {'Comments'}
-          <Card.Link href="#">Add a comment</Card.Link>
+          <Card.Link href="#" className="ml-2">Add a comment</Card.Link>
         </Card.Header>
-        {numComments
-          ? commentCardBody
-          : 'No comments'}
+        <Card.Body>
+          {numComments
+            ? commentCardBody
+            : 'No comments'}
+        </Card.Body>
       </Card>
     ) : (
       <Accordion>
@@ -48,7 +52,9 @@ const SinglePost = (props) => {
           </Accordion.Toggle>
           {!!numComments && (
           <Accordion.Collapse eventKey={id}>
-            {commentCardBody}
+            <Card.Body>
+              {commentCardBody}
+            </Card.Body>
           </Accordion.Collapse>
           )}
         </Card>
@@ -62,7 +68,7 @@ const SinglePost = (props) => {
           <Media>
             <img width={64} height={64} className="mr-3" src={userPhoto} alt="User pic" />
             <Media.Body>
-              <h5>{title}</h5>
+              <h5>{cardItem ? title : <Link to={`/view-post/${id}`}>{title}</Link>}</h5>
               <h6>
                 <em>{`Written by ${author} on ${dateLastUpdated}`}</em>
               </h6>
