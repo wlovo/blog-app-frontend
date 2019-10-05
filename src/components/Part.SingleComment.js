@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Media } from 'react-bootstrap';
 import get from 'lodash/get';
+import { Link } from 'react-router-dom';
 import formatDate from '../utils/format-date';
 import userPhoto from '../images/user.svg';
 
@@ -15,6 +16,7 @@ const SingleComment = (props) => {
 
   const {
     body,
+    postId,
     updatedAt,
     author = 'Anonymous',
   } = comment;
@@ -51,6 +53,9 @@ const SingleComment = (props) => {
             {commentMediaBody}
           </Media>
         </Card.Body>
+        <Card.Footer as="h6">
+          <Link to={`/view-post/${postId}`}>View Post</Link>
+        </Card.Footer>
       </Card>
     )
     : (
