@@ -5,7 +5,6 @@ import React from 'react';
 import { Container, Button, Form } from 'react-bootstrap';
 import * as yup from 'yup';
 
-
 const schema = yup.object({
   title: yup.string()
     .required('Cannot be empty')
@@ -37,13 +36,13 @@ const addFormik = withFormik({
 });
 
 const PostForm = ({
-  author = 'Anonymous',
   touched,
   errors,
   isSubmitting,
   handleChange,
   handleBlur,
   handleSubmit,
+  author = 'Anonymous',
 }) => (
   <Container fluid className="p-0">
     <h1>Edit Post</h1>
