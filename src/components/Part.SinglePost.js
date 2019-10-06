@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import get from 'lodash/get';
 import {
-  Accordion, Badge, Card, Media,
+  Accordion, Badge, Button, Card, Media, Row, Col,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import formatDate from '../utils/format-date';
@@ -27,6 +27,7 @@ const SinglePost = (props) => {
   } = post;
 
   const cardItem = get(props, 'cardItem', false);
+  const deletePost = get(props, 'deletePost');
 
   const dateLastUpdated = formatDate(updatedAt);
   const numComments = get(comments, 'length', '');
@@ -69,7 +70,14 @@ const SinglePost = (props) => {
           <Media>
             <img width={64} height={64} className="mr-3" src={userPhoto} alt="User pic" />
             <Media.Body>
-              <h5>{cardItem ? title : <Link to={`/view-post/${id}`}>{title}</Link>}</h5>
+              <Row>
+                <Col xs={12} md>
+                  <h5>{cardItem ? title : <Link to={`/view-post/${id}`}>{title}</Link>}</h5>
+                </Col>
+                <Col xs={12} md="auto" className="my-1 my-md-auto">
+                  {cardItem && <Button onClick={deletePost}>Delete</Button>}
+                </Col>
+              </Row>
               <h6>
                 <em>{`Written by ${author} on ${dateLastUpdated}`}</em>
               </h6>

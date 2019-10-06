@@ -5,10 +5,16 @@ import SinglePost from './Part.SinglePost';
 
 const PageViewPost = (props) => {
   const post = get(props, 'post', []);
+  const deletePost = get(props, 'deletePost');
   return (
     <Container fluid className="p-0">
       <h1>View Post</h1>
-      <SinglePost key={post.id} post={post} cardItem />
+      <SinglePost
+        key={post.id}
+        post={post}
+        deletePost={deletePost}
+        cardItem
+      />
     </Container>
   );
 };
