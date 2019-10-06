@@ -70,11 +70,11 @@ const SinglePost = (props) => {
           <Media>
             <img width={64} height={64} className="mr-3" src={userPhoto} alt="User pic" />
             <Media.Body>
-              <Row>
+              <Row noGutters>
                 <Col xs={12} md>
                   <h5>{cardItem ? title : <Link to={`/view-post/${id}`}>{title}</Link>}</h5>
                 </Col>
-                <Col xs={12} md="auto" className="my-1 my-md-auto">
+                <Col xs="auto" md="auto" className="my-1 mx-1 my-md-auto">
                   {cardItem && <Button onClick={deletePost}>Delete</Button>}
                 </Col>
               </Row>
