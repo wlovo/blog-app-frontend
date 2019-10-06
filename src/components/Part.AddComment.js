@@ -33,7 +33,7 @@ const CommentForm = ({
 }) => (
   <Form onSubmit={handleSubmit} className="mb-3">
     <Form.Row controlId="Form.Comment">
-      <Col xs>
+      <Col xs={12} md>
         <Form.Control
           type="text"
           name="body"
@@ -53,7 +53,7 @@ const CommentForm = ({
         <div className="input-feedback">{errors.title}</div>
         )}
       </Col>
-      <Col xs="auto">
+      <Col xs={12} md="auto" className="my-1 my-md-auto">
         <Button
           variant="outline-info"
           type="submit"
