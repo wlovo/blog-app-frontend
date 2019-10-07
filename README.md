@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Accompanying Backend
+
+The following [repo](https://github.com/wlovo/blog-app-backend) contains a Node/Express backend that uses this frontend for demonstration purposes.
+
 ## Available Scripts
 
 In the project directory, you can run:
