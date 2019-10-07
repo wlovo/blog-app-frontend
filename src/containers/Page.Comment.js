@@ -8,6 +8,9 @@ class PageCommentContainer extends Component {
     await this.getComments();
   }
 
+  /**
+   * Request all comments.
+   */
   getComments = async () => {
     const { data } = await axios.get('/comments');
     this.setState({ comments: data });

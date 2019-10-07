@@ -8,8 +8,11 @@ class RecentPostsContainer extends Component {
     await this.getPosts();
   }
 
+  /**
+   * Request for the 5 most recent posts in descending order.
+   */
   getPosts = async () => {
-    const { data } = await axios.get('/posts?limit=5');
+    const { data } = await axios.get('/posts?limit=5&order=DESC');
     this.setState({ posts: data });
   };
 

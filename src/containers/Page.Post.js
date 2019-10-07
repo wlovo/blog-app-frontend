@@ -8,6 +8,9 @@ class PagePostContainer extends Component {
     await this.getPosts();
   }
 
+  /**
+   * Request all posts.
+   */
   getPosts = async () => {
     const { data } = await axios.get('/posts');
     this.setState({ posts: data });

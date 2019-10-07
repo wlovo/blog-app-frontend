@@ -11,6 +11,9 @@ class PageViewPostContainer extends Component {
     await this.getPost();
   }
 
+  /**
+   * Displays a prompt to confirm the deletion of the post.
+   */
   promptDelete = () => {
     confirmAlert({
       title: 'Delete Post',
@@ -30,6 +33,9 @@ class PageViewPostContainer extends Component {
     });
   }
 
+  /**
+   * Deletes the current post.
+   */
   deletePost = async () => {
     const { history } = this.props;
     const postId = get(this.props, 'match.params.id');
@@ -37,6 +43,9 @@ class PageViewPostContainer extends Component {
     history.push('/');
   }
 
+  /**
+   * Requests the post.
+   */
   getPost = async () => {
     const postId = get(this.props, 'match.params.id');
     const { data } = await axios.get(`/posts/${postId}`);

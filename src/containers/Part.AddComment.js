@@ -5,6 +5,9 @@ import axios from '../utils/axios-default';
 import AddComment from '../components/Part.AddComment';
 
 class PageViewPostContainer extends Component {
+  /**
+   * Submit a comment for the current post.
+   */
   submitComment = async (values) => {
     const { history } = this.props;
     const { postId } = this.props;
