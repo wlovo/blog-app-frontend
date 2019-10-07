@@ -5,11 +5,13 @@ import axios from '../utils/axios-default';
 import PageEditPost from '../components/Page.EditPost';
 
 class PageNewPost extends Component {
+  /**
+   * Creates a post.
+   */
   createPost = async (values) => {
     const { history } = this.props;
-    await axios.post('/posts', { post: values });
-    // history.push(`/view-post/${data.post.id}`);
-    history.push('/posts');
+    const { data } = await axios.post('/posts', { post: values });
+    history.push(`/view-post/${data.id}`);
   };
 
   render() {
