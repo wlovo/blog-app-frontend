@@ -5,7 +5,6 @@ import PageHome from './Page.Home';
 import PagePost from '../containers/Page.Post';
 import PageComments from '../containers/Page.Comment';
 import PageNewPost from '../containers/Page.NewPost';
-import PageUpdatePost from '../containers/Page.UpdatePost';
 import PageViewPost from '../containers/Page.ViewPost';
 
 const MainContent = () => (
@@ -19,7 +18,6 @@ const MainContent = () => (
     <Route exact path="/new-post">
       <PageNewPost />
     </Route>
-    <Route exact path="/update-post/:id" component={PageUpdatePost} />
     <Route exact path="/view-post/:id" component={PageViewPost} />
     <Route exact path="/">
       <PageHome />
