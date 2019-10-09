@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import get from 'lodash/get';
 import {
-  Accordion, Badge, Button, Card, Media, Row, Col,
+  Accordion, Badge, Button, Card, Col, Media, Row,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import formatDate from '../utils/format-date';
 import userPhoto from '../images/user.svg';
 import ListComments from './List.Comments';
 import AddComment from '../containers/Part.AddComment';
 
-const SinglePost = (props) => {
-  const stateDefaults = {
-    currentUser: {},
-    post: { title: 'Title', body: 'Words', comments: [] },
-  };
-
-  const [post] = useState(get(props, 'post', stateDefaults.post));
+const SinglePost = ({
+  cardItem,
+  deletePost,
+  post,
+}) => {
+  const [currentPost] = useState(post);
 
   const {
     id,
@@ -24,13 +24,10 @@ const SinglePost = (props) => {
     updatedAt,
     comments,
     author = 'Anonymous',
-  } = post;
-
-  const cardItem = get(props, 'cardItem', false);
-  const deletePost = get(props, 'deletePost');
+  } = currentPost;
 
   const dateLastUpdated = formatDate(updatedAt);
-  const numComments = get(comments, 'length', '');
+  const numComments = get(comments, 'length');
   const commentCardBody = <ListComments comments={comments} />;
   const commentSection = cardItem
     ? (
@@ -89,6 +86,23 @@ const SinglePost = (props) => {
       </Card>
     </>
   );
+};
+
+SinglePost.propTypes = {
+  cardItem: PropTypes.bool,
+  deletePost: PropTypes.func,
+  post: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    title: PropTypes.string,
+    body: PropTypes.string,
+    comments: PropTypes.arrayOf(PropTypes.object),
+    updatedAt: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+  }).isRequired,
+};
+
+SinglePost.defaultProps = {
+  cardItem: false,
+  deletePost: () => false,
 };
 
 export default SinglePost;

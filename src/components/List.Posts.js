@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import get from 'lodash/get';
+import PropTypes from 'prop-types';
 import PartSinglePost from './Part.SinglePost';
 
-const ListPosts = (props) => {
-  const stateDefaults = {
-    posts: [],
-  };
-
-  const [currPosts, setCurrPosts] = useState([]);
-  const posts = get(props, 'posts', stateDefaults.posts);
+const ListPosts = ({
+  posts,
+}) => {
+  const [currentPosts, setCurrentPosts] = useState(posts);
 
   useEffect(() => {
-    setCurrPosts(posts);
+    setCurrentPosts(posts);
   }, [posts]);
 
-  const postArray = currPosts.map((post) => (
+  const postArray = currentPosts.map((post) => (
     <PartSinglePost key={post.id} post={post} />
   ));
 
@@ -23,6 +20,14 @@ const ListPosts = (props) => {
       {postArray}
     </ul>
   );
+};
+
+ListPosts.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object),
+};
+
+ListPosts.defaultProps = {
+  posts: [],
 };
 
 export default ListPosts;

@@ -1,9 +1,15 @@
 import React, { Component, Suspense } from 'react';
-import get from 'lodash/get';
 import axios from '../utils/axios-default';
 import PageComment from '../components/Page.Comment';
 
 class PageCommentContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      comments: [],
+    };
+  }
+
   async componentDidMount() {
     await this.getComments();
   }
@@ -17,10 +23,11 @@ class PageCommentContainer extends Component {
   };
 
   render() {
+    const { comments } = this.state;
     return (
       <>
         <Suspense fallback={<div>Loading...</div>}>
-          <PageComment comments={get(this.state, 'comments')} />
+          <PageComment comments={comments} />
         </Suspense>
       </>
     );

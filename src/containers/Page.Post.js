@@ -1,9 +1,15 @@
 import React, { Component, Suspense } from 'react';
-import get from 'lodash/get';
 import axios from '../utils/axios-default';
 import PagePost from '../components/Page.Post';
 
 class PagePostContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [],
+    };
+  }
+
   async componentDidMount() {
     await this.getPosts();
   }
@@ -17,14 +23,21 @@ class PagePostContainer extends Component {
   };
 
   render() {
+    const { posts } = this.state;
     return (
       <>
         <Suspense fallback={<div>Loading...</div>}>
-          <PagePost posts={get(this.state, 'posts')} />
+          <PagePost posts={posts} />
         </Suspense>
       </>
     );
   }
 }
+
+PagePostContainer.propTypes = {
+};
+
+PagePostContainer.defaultProps = {
+};
 
 export default PagePostContainer;

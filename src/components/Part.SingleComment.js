@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
 import { Card, Media } from 'react-bootstrap';
-import get from 'lodash/get';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import formatDate from '../utils/format-date';
 import userPhoto from '../images/user.svg';
 
-const SingleComment = (props) => {
-  const stateDefaults = {
-    currentUser: {},
-    comment: { body: 'Words' },
-  };
-
-  const cardItem = get(props, 'cardItem', false);
-  const [comment] = useState(get(props, 'comment', stateDefaults.comment));
+const SingleComment = ({
+  cardItem,
+  comment,
+}) => {
+  const [currentComment] = useState(comment);
 
   const {
     body,
     postId,
     updatedAt,
     author = 'Anonymous',
-  } = comment;
+  } = currentComment;
 
   const dateLastUpdated = formatDate(updatedAt);
 
@@ -65,6 +62,19 @@ const SingleComment = (props) => {
     );
 
   return commentItem;
+};
+
+SingleComment.propTypes = {
+  cardItem: PropTypes.bool,
+  comment: PropTypes.shape({
+    body: PropTypes.string,
+    postId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    updatedAt: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+  }).isRequired,
+};
+
+SingleComment.defaultProps = {
+  cardItem: false,
 };
 
 export default SingleComment;

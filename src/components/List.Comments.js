@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import get from 'lodash/get';
+import PropTypes from 'prop-types';
 import PartSingleComment from './Part.SingleComment';
 
-const ListComments = (props) => {
-  const stateDefaults = {
-    comments: [],
-  };
-
-  const [currComments, setCurrComments] = useState([]);
-  const comments = get(props, 'comments', stateDefaults.comments);
-  const cardItem = get(props, 'cardItem', false);
+const ListComments = ({
+  cardItem,
+  comments,
+}) => {
+  const [currentComments, setCurrentComments] = useState(comments);
 
   useEffect(() => {
-    setCurrComments(comments);
+    setCurrentComments(comments);
   }, [comments]);
 
-  const commentArray = currComments.map((comment) => (
+  const commentArray = currentComments.map((comment) => (
     <PartSingleComment key={comment.id} comment={comment} cardItem={cardItem} />
   ));
 
@@ -24,6 +21,16 @@ const ListComments = (props) => {
       {commentArray}
     </ul>
   );
+};
+
+ListComments.propTypes = {
+  cardItem: PropTypes.bool,
+  comments: PropTypes.arrayOf(PropTypes.object),
+};
+
+ListComments.defaultProps = {
+  cardItem: false,
+  comments: [],
 };
 
 export default ListComments;

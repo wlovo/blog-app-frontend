@@ -1,9 +1,15 @@
 import React, { Component, Suspense } from 'react';
-import get from 'lodash/get';
 import axios from '../utils/axios-default';
 import ListPosts from '../components/List.Posts';
 
 class RecentPostsContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [],
+    };
+  }
+
   async componentDidMount() {
     await this.getPosts();
   }
@@ -17,10 +23,11 @@ class RecentPostsContainer extends Component {
   };
 
   render() {
+    const { posts } = this.state;
     return (
       <>
         <Suspense fallback={<div>Loading...</div>}>
-          <ListPosts posts={get(this.state, 'posts')} />
+          <ListPosts posts={posts} />
         </Suspense>
       </>
     );

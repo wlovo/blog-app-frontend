@@ -1,12 +1,19 @@
-/* eslint-disable react/prop-types */
 import React, { Component, Suspense } from 'react';
 import get from 'lodash/get';
 import { confirmAlert } from 'react-confirm-alert';
+import PropTypes from 'prop-types';
 import axios from '../utils/axios-default';
 import PageViewPost from '../components/Page.ViewPost';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 class PageViewPostContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      post: {},
+    };
+  }
+
   async componentDidMount() {
     await this.getPost();
   }
@@ -38,7 +45,8 @@ class PageViewPostContainer extends Component {
    */
   deletePost = async () => {
     const { history } = this.props;
-    const postId = get(this.props, 'match.params.id');
+    const { match } = this.props;
+    const postId = get(match, 'params.id');
     await axios.delete(`/posts/${postId}`);
     history.push('/');
   }
@@ -47,17 +55,19 @@ class PageViewPostContainer extends Component {
    * Requests the post.
    */
   getPost = async () => {
-    const postId = get(this.props, 'match.params.id');
+    const { match } = this.props;
+    const postId = get(match, 'params.id');
     const { data } = await axios.get(`/posts/${postId}`);
     this.setState({ post: data });
   };
 
   render() {
+    const { post } = this.state;
     return (
       <>
         <Suspense fallback={<div>Loading...</div>}>
           <PageViewPost
-            post={get(this.state, 'post')}
+            post={post}
             deletePost={this.promptDelete}
           />
         </Suspense>
@@ -65,5 +75,20 @@ class PageViewPostContainer extends Component {
     );
   }
 }
+
+PageViewPostContainer.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.number,
+      ]).isRequired,
+    }),
+  }).isRequired,
+};
+
+PageViewPostContainer.defaultProps = {};
 
 export default PageViewPostContainer;

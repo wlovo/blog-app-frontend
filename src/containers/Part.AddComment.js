@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import axios from '../utils/axios-default';
 import AddComment from '../components/Part.AddComment';
 
-class PageViewPostContainer extends Component {
+class AddCommentContainer extends Component {
   /**
    * Submit a comment for the current post.
    */
@@ -23,4 +23,18 @@ class PageViewPostContainer extends Component {
   }
 }
 
-export default withRouter(PageViewPostContainer);
+AddCommentContainer.propTypes = {
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+  postId: PropTypes.oneOfType([
+    PropTypes.string, PropTypes.number,
+  ]),
+};
+
+AddCommentContainer.defaultProps = {
+  postId: 0,
+};
+
+export default withRouter(AddCommentContainer);

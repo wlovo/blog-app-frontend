@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 import { withFormik } from 'formik';
 import get from 'lodash/get';
 import React from 'react';
 import { Container, Button, Form } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import * as yup from 'yup';
 
 const schema = yup.object({
@@ -42,7 +42,7 @@ const PostForm = ({
   handleChange,
   handleBlur,
   handleSubmit,
-  author = 'Anonymous',
+  author,
 }) => (
   <Container fluid className="p-0">
     <h1>Edit Post</h1>
@@ -97,7 +97,7 @@ const PostForm = ({
           type="submit"
           disabled={isSubmitting}
         >
-            Submit
+          Submit
         </Button>
         <Form.Label className="ml-2">
           <em>{`Submitting as ${author}`}</em>
@@ -106,6 +106,23 @@ const PostForm = ({
     </Form>
   </Container>
 );
+
+PostForm.propTypes = {
+  author: PropTypes.string,
+  touched: PropTypes.objectOf(PropTypes.bool).isRequired,
+  errors: PropTypes.shape({
+    title: PropTypes.string,
+    body: PropTypes.string,
+  }).isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};
+
+PostForm.defaultProps = {
+  author: 'Anonymous',
+};
 
 const PageEditPost = addFormik(PostForm);
 
