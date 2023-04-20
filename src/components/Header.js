@@ -1,14 +1,16 @@
-import React from 'react';
-import {
-  Button, Form, Nav, Navbar,
-} from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { Button, Form, Nav, Navbar } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 const Header = () => (
-  <Navbar collapseOnSelect expand="md" variant="dark" sticky="top" className="App-header">
-    <Navbar.Brand>
-      BlogApp
-    </Navbar.Brand>
+  <Navbar
+    collapseOnSelect
+    expand="md"
+    variant="dark"
+    sticky="top"
+    className="App-header"
+  >
+    <Navbar.Brand>BlogApp</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav activeKey="/" className="mr-auto">
@@ -31,7 +33,7 @@ const Header = () => (
       <Form inline className="mt-3 my-md-auto d-flex justify-content-center">
         <Button variant="outline-info" className="mx-auto">
           <NavLink activeClassName="active" exact to="/new-post">
-          New Post
+            New Post
           </NavLink>
         </Button>
       </Form>

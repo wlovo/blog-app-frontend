@@ -1,7 +1,7 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import PropTypes from 'prop-types';
-import ListPosts from './List.Posts';
+import React from "react";
+import Container from "react-bootstrap/Container";
+import PropTypes from "prop-types";
+import ListPosts from "./List.Posts";
 
 const PagePost = ({ posts }) => (
   <Container fluid className="p-0">

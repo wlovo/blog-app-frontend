@@ -1,20 +1,12 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import PropTypes from 'prop-types';
-import SinglePost from './Part.SinglePost';
+import React from "react";
+import Container from "react-bootstrap/Container";
+import PropTypes from "prop-types";
+import SinglePost from "./Part.SinglePost";
 
-const PageViewPost = ({
-  post,
-  deletePost,
-}) => (
+const PageViewPost = ({ post, deletePost }) => (
   <Container fluid className="p-0">
     <h1>View Post</h1>
-    <SinglePost
-      key={post.id}
-      post={post}
-      deletePost={deletePost}
-      cardItem
-    />
+    <SinglePost key={post.id} post={post} deletePost={deletePost} cardItem />
   </Container>
 );
 

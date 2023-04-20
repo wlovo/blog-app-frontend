@@ -1,24 +1,26 @@
-import { withFormik } from 'formik';
-import get from 'lodash/get';
-import React from 'react';
-import { Container, Button, Form } from 'react-bootstrap';
-import PropTypes from 'prop-types';
-import * as yup from 'yup';
+import { withFormik } from "formik";
+import get from "lodash/get";
+import React from "react";
+import { Container, Button, Form } from "react-bootstrap";
+import PropTypes from "prop-types";
+import * as yup from "yup";
 
 const schema = yup.object({
-  title: yup.string()
-    .required('Cannot be empty')
-    .min(2, 'Must be longer than 2 characters')
-    .default(''),
-  body: yup.string()
-    .required('Cannot be empty')
-    .min(2, 'Must be longer than 2 characters')
-    .default(''),
+  title: yup
+    .string()
+    .required("Cannot be empty")
+    .min(2, "Must be longer than 2 characters")
+    .default(""),
+  body: yup
+    .string()
+    .required("Cannot be empty")
+    .min(2, "Must be longer than 2 characters")
+    .default(""),
 });
 
 const setInitialFormValues = (props) => {
-  const title = get(props, 'post.title');
-  const body = get(props, 'post.body');
+  const title = get(props, "post.title");
+  const body = get(props, "post.body");
   return { title, body };
 };
 
@@ -28,7 +30,7 @@ const useOnSubmit = (values, formikBag) => {
 };
 
 const addFormik = withFormik({
-  displayName: 'EditPost',
+  displayName: "EditPost",
   handleSubmit: useOnSubmit,
   mapPropsToValues: setInitialFormValues,
   mapValuesToPayload: (x) => x,
@@ -57,16 +59,11 @@ const PostForm = ({
           onBlur={handleBlur}
           placeholder="Enter a title for your post"
           className={
-            errors.title && touched.title ? (
-              'text-input error'
-            ) : (
-              'text-input'
-            )
+            errors.title && touched.title ? "text-input error" : "text-input"
           }
         />
-        {errors.title
-        && touched.title && (
-        <div className="input-feedback">{errors.title}</div>
+        {errors.title && touched.title && (
+          <div className="input-feedback">{errors.title}</div>
         )}
       </Form.Group>
       <Form.Group controlId="Form.Body">
@@ -79,24 +76,15 @@ const PostForm = ({
           onBlur={handleBlur}
           placeholder="Enter your thoughts here"
           className={
-            errors.body && touched.body ? (
-              'text-input error'
-            ) : (
-              'text-input'
-            )
+            errors.body && touched.body ? "text-input error" : "text-input"
           }
         />
-        {errors.body
-        && touched.body && (
-        <div className="input-feedback">{errors.body}</div>
+        {errors.body && touched.body && (
+          <div className="input-feedback">{errors.body}</div>
         )}
       </Form.Group>
       <Form.Group>
-        <Button
-          variant="outline-info"
-          type="submit"
-          disabled={isSubmitting}
-        >
+        <Button variant="outline-info" type="submit" disabled={isSubmitting}>
           Submit
         </Button>
         <Form.Label className="ml-2">
@@ -121,7 +109,7 @@ PostForm.propTypes = {
 };
 
 PostForm.defaultProps = {
-  author: 'Anonymous',
+  author: "Anonymous",
 };
 
 const PageEditPost = addFormik(PostForm);

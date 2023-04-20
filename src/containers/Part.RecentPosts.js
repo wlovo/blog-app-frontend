@@ -1,6 +1,6 @@
-import React, { Component, Suspense } from 'react';
-import axios from '../utils/axios-default';
-import ListPosts from '../components/List.Posts';
+import React, { Component, Suspense } from "react";
+import axios from "../utils/axios-default";
+import ListPosts from "../components/List.Posts";
 
 class RecentPostsContainer extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class RecentPostsContainer extends Component {
    * Request for the 5 most recent posts in descending order.
    */
   getPosts = async () => {
-    const { data } = await axios.get('/posts?limit=5&order=DESC');
+    const { data } = await axios.get("/posts?limit=5&order=DESC");
     this.setState({ posts: data });
   };
 

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import axios from '../utils/axios-default';
-import AddComment from '../components/Part.AddComment';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import axios from "../utils/axios-default";
+import AddComment from "../components/Part.AddComment";
 
 class AddCommentContainer extends Component {
   /**
@@ -11,15 +11,13 @@ class AddCommentContainer extends Component {
   submitComment = async (values) => {
     const { history } = this.props;
     const { postId } = this.props;
-    await axios.post('/comments', { comment: { ...values, postId } });
+    await axios.post("/comments", { comment: { ...values, postId } });
     history.push(`/view-post/${postId}/refresh`);
     history.goBack();
   };
 
   render() {
-    return (
-      <AddComment onSubmit={this.submitComment} />
-    );
+    return <AddComment onSubmit={this.submitComment} />;
   }
 }
 
@@ -28,9 +26,7 @@ AddCommentContainer.propTypes = {
     goBack: PropTypes.func.isRequired,
     push: PropTypes.func.isRequired,
   }).isRequired,
-  postId: PropTypes.oneOfType([
-    PropTypes.string, PropTypes.number,
-  ]),
+  postId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 AddCommentContainer.defaultProps = {

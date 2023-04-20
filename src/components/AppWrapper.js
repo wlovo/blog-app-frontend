@@ -1,10 +1,10 @@
-import React, { Suspense } from 'react';
-import { Switch } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Header from './Header';
-import Footer from './Footer';
+import React, { Suspense } from "react";
+import { Switch } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Header from "./Header";
+import Footer from "./Footer";
 
-const MainContent = React.lazy(() => import('./MainContent'));
+const MainContent = React.lazy(() => import("./MainContent"));
 
 const AppWrapper = () => (
   <Container>

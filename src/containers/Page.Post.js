@@ -1,6 +1,6 @@
-import React, { Component, Suspense } from 'react';
-import axios from '../utils/axios-default';
-import PagePost from '../components/Page.Post';
+import React, { Component, Suspense } from "react";
+import axios from "../utils/axios-default";
+import PagePost from "../components/Page.Post";
 
 class PagePostContainer extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class PagePostContainer extends Component {
    * Request all posts.
    */
   getPosts = async () => {
-    const { data } = await axios.get('/posts');
+    const { data } = await axios.get("/posts");
     this.setState({ posts: data });
   };
 
@@ -34,10 +34,8 @@ class PagePostContainer extends Component {
   }
 }
 
-PagePostContainer.propTypes = {
-};
+PagePostContainer.propTypes = {};
 
-PagePostContainer.defaultProps = {
-};
+PagePostContainer.defaultProps = {};
 
 export default PagePostContainer;

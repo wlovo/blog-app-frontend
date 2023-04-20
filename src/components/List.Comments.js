@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import PartSingleComment from './Part.SingleComment';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import PartSingleComment from "./Part.SingleComment";
 
-const ListComments = ({
-  cardItem,
-  comments,
-}) => {
+const ListComments = ({ cardItem, comments }) => {
   const [currentComments, setCurrentComments] = useState(comments);
 
   useEffect(() => {
@@ -16,11 +13,7 @@ const ListComments = ({
     <PartSingleComment key={comment.id} comment={comment} cardItem={cardItem} />
   ));
 
-  return (
-    <ul>
-      {commentArray}
-    </ul>
-  );
+  return <ul>{commentArray}</ul>;
 };
 
 ListComments.propTypes = {

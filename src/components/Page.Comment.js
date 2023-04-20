@@ -1,7 +1,7 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import PropTypes from 'prop-types';
-import ListComments from './List.Comments';
+import React from "react";
+import Container from "react-bootstrap/Container";
+import PropTypes from "prop-types";
+import ListComments from "./List.Comments";
 
 const PageComments = ({ comments }) => (
   <Container fluid className="p-0">

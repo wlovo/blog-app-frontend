@@ -1,10 +1,10 @@
-import React, { Component, Suspense } from 'react';
-import get from 'lodash/get';
-import { confirmAlert } from 'react-confirm-alert';
-import PropTypes from 'prop-types';
-import axios from '../utils/axios-default';
-import PageViewPost from '../components/Page.ViewPost';
-import 'react-confirm-alert/src/react-confirm-alert.css';
+import React, { Component, Suspense } from "react";
+import get from "lodash/get";
+import { confirmAlert } from "react-confirm-alert";
+import PropTypes from "prop-types";
+import axios from "../utils/axios-default";
+import PageViewPost from "../components/Page.ViewPost";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 class PageViewPostContainer extends Component {
   constructor(props) {
@@ -23,22 +23,22 @@ class PageViewPostContainer extends Component {
    */
   promptDelete = () => {
     confirmAlert({
-      title: 'Delete Post',
-      message: 'Are you sure you want to delete this post?',
+      title: "Delete Post",
+      message: "Are you sure you want to delete this post?",
       closeOnEscape: true,
       closeOnClickOutside: true,
       buttons: [
         {
-          label: 'Delete',
+          label: "Delete",
           onClick: this.deletePost,
         },
         {
-          label: 'Cancel',
+          label: "Cancel",
           onClick: () => false,
         },
       ],
     });
-  }
+  };
 
   /**
    * Deletes the current post.
@@ -46,17 +46,17 @@ class PageViewPostContainer extends Component {
   deletePost = async () => {
     const { history } = this.props;
     const { match } = this.props;
-    const postId = get(match, 'params.id');
+    const postId = get(match, "params.id");
     await axios.delete(`/posts/${postId}`);
-    history.push('/');
-  }
+    history.push("/");
+  };
 
   /**
    * Requests the post.
    */
   getPost = async () => {
     const { match } = this.props;
-    const postId = get(match, 'params.id');
+    const postId = get(match, "params.id");
     const { data } = await axios.get(`/posts/${postId}`);
     this.setState({ post: data });
   };
@@ -66,10 +66,7 @@ class PageViewPostContainer extends Component {
     return (
       <>
         <Suspense fallback={<div>Loading...</div>}>
-          <PageViewPost
-            post={post}
-            deletePost={this.promptDelete}
-          />
+          <PageViewPost post={post} deletePost={this.promptDelete} />
         </Suspense>
       </>
     );
@@ -82,9 +79,7 @@ PageViewPostContainer.propTypes = {
   }).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.number,
-      ]).isRequired,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     }),
   }).isRequired,
 };

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import RecentPosts from '../containers/Part.RecentPosts';
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import RecentPosts from "../containers/Part.RecentPosts";
 
 const PageHome = () => (
   <Container fluid className="p-0">

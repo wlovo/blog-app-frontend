@@ -1,11 +1,11 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import { Route } from 'react-router-dom';
-import PageHome from './Page.Home';
-import PagePost from '../containers/Page.Post';
-import PageComments from '../containers/Page.Comment';
-import PageNewPost from '../containers/Page.NewPost';
-import PageViewPost from '../containers/Page.ViewPost';
+import React from "react";
+import Container from "react-bootstrap/Container";
+import { Route } from "react-router-dom";
+import PageHome from "./Page.Home";
+import PagePost from "../containers/Page.Post";
+import PageComments from "../containers/Page.Comment";
+import PageNewPost from "../containers/Page.NewPost";
+import PageViewPost from "../containers/Page.ViewPost";
 
 const MainContent = () => (
   <Container>

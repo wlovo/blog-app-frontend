@@ -1,6 +1,6 @@
-import React, { Component, Suspense } from 'react';
-import axios from '../utils/axios-default';
-import PageComment from '../components/Page.Comment';
+import React, { Component, Suspense } from "react";
+import axios from "../utils/axios-default";
+import PageComment from "../components/Page.Comment";
 
 class PageCommentContainer extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class PageCommentContainer extends Component {
    * Request all comments.
    */
   getComments = async () => {
-    const { data } = await axios.get('/comments');
+    const { data } = await axios.get("/comments");
     this.setState({ comments: data });
   };
 

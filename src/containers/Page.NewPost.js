@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import axios from '../utils/axios-default';
-import PageEditPost from '../components/Page.EditPost';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import axios from "../utils/axios-default";
+import PageEditPost from "../components/Page.EditPost";
 
 class PageNewPost extends Component {
   /**
@@ -10,14 +10,12 @@ class PageNewPost extends Component {
    */
   createPost = async (values) => {
     const { history } = this.props;
-    const { data } = await axios.post('/posts', { post: values });
+    const { data } = await axios.post("/posts", { post: values });
     history.push(`/view-post/${data.id}`);
   };
 
   render() {
-    return (
-      <PageEditPost onSubmit={this.createPost} />
-    );
+    return <PageEditPost onSubmit={this.createPost} />;
   }
 }
 
@@ -27,7 +25,6 @@ PageNewPost.propTypes = {
   }).isRequired,
 };
 
-PageNewPost.defaultProps = {
-};
+PageNewPost.defaultProps = {};
 
 export default withRouter(PageNewPost);

@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import PartSinglePost from './Part.SinglePost';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import PartSinglePost from "./Part.SinglePost";
 
-const ListPosts = ({
-  posts,
-}) => {
+const ListPosts = ({ posts }) => {
   const [currentPosts, setCurrentPosts] = useState(posts);
 
   useEffect(() => {
@@ -15,11 +13,7 @@ const ListPosts = ({
     <PartSinglePost key={post.id} post={post} />
   ));
 
-  return (
-    <ul>
-      {postArray}
-    </ul>
-  );
+  return <ul>{postArray}</ul>;
 };
 
 ListPosts.propTypes = {
